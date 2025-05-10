@@ -6,7 +6,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Load model checkpoint
 checkpoint = 'checkpoint_ssd300.pth.tar'
-checkpoint = torch.load(checkpoint, weights_only=False, map_location=torch.device('cpu'))
+checkpoint = torch.load(checkpoint, weights_only=False, map_location=torch.device("cuda" if torch.cuda.is_available() else "cpu"))
 start_epoch = checkpoint['epoch'] + 1
 print('\nLoaded checkpoint from epoch %d.\n' % start_epoch)
 model = checkpoint['model']

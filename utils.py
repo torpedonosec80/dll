@@ -228,7 +228,7 @@ def calculate_mAP(det_boxes, det_labels, det_scores, true_boxes, true_labels, tr
 
             # 'ind' is the index of the object in these image-level tensors 'object_boxes', 'object_difficulties'
             # In the original class-level tensors 'true_class_boxes', etc., 'ind' corresponds to object with index...
-            original_ind = torch.LongTensor(range(true_class_boxes.size(0))).to(device)[true_class_images == this_image][ind]
+            original_ind = torch.tensor(range(true_class_boxes.size(0)), dtype=torch.long, device='cuda')[true_class_images == this_image][ind]
             # We need 'original_ind' to update 'true_class_boxes_detected'
 
             # If the maximum overlap is greater than the threshold of 0.5, it's a match
